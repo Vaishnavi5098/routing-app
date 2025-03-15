@@ -1,0 +1,23 @@
+<div>
+  <h2>Employee List</h2>
+
+  <!-- Search Input (Two-Way Binding) -->
+  <input type="text" [(ngModel)]="searchTerm" (input)="filterEmployees()" placeholder="Search Employees" />
+
+  <!-- Conditional Message if No Employees Found -->
+  <p *ngIf="filteredEmployees.length === 0">No employees found.</p>
+
+  <!-- Employee Table -->
+  <table *ngIf="filteredEmployees.length > 0" border="1">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Company</th>
+    </tr>
+    <tr *ngFor="let emp of filteredEmployees">
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.email }}</td>
+      <td>{{ emp.company?.name }}</td>
+    </tr>
+  </table>
+</div>
